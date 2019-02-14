@@ -59,11 +59,11 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-	vector<int> findedStringNumbers = FindStringInStream(input, searchedStr);
+	vector<int> foundedStringNumbers = FindStringInStream(input, searchedStr);
 
-	if (!findedStringNumbers.empty())
+	if (!foundedStringNumbers.empty())
 	{
-		copy(findedStringNumbers.begin(), findedStringNumbers.end(), ostream_iterator<int>(cout, "\n"));
+		copy(foundedStringNumbers.begin(), foundedStringNumbers.end(), ostream_iterator<int>(cout, "\n"));
 	}
 	else
 	{
