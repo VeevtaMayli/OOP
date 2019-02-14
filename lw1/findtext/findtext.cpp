@@ -8,7 +8,7 @@
 
 using namespace std;
 
-vector<int> FindStringInStream(ifstream& in, string str)
+vector<int> FindStringInStream(istream& in, string str)
 {
 	string tempStr;
 	vector<int> stringNumbers;
@@ -17,7 +17,7 @@ vector<int> FindStringInStream(ifstream& in, string str)
 	while (getline(in, tempStr))
 	{
 		stringNumber++;
-		if (tempStr.find(str) != -1)
+		if (tempStr.find(str) != string::npos)
 		{
 			stringNumbers.push_back(stringNumber);
 		}
