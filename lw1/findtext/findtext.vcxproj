@@ -191,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="empty-out.txt" />
+    <Text Include="empty-string-out.txt" />
     <Text Include="empty.txt" />
     <Text Include="input.txt" />
     <Text Include="no-input-file-out.txt" />

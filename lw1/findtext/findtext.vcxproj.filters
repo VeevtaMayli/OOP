@@ -57,5 +57,8 @@
     <Text Include="no-arguments-out.txt">
       <Filter>tests</Filter>
     </Text>
+    <Text Include="empty-string-out.txt">
+      <Filter>tests</Filter>
+    </Text>
   </ItemGroup>
 </Project>

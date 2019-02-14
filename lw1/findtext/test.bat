@@ -22,6 +22,12 @@ if NOT ERRORLEVEL 1 goto err
 fc %OUT% empty-out.txt
 if ERRORLEVEL 1 goto err
 
+::Проверка на пустую уискомую строку
+%PROGRAM% input.txt "" > %OUT%
+if NOT ERRORLEVEL 1 goto err
+fc %OUT% empty-string-out.txt
+if ERRORLEVEL 1 goto err
+
 ::Искомая строка не найдена
 %PROGRAM% input.txt "We are young" > %OUT% || goto err
 fc %OUT% nothing-found-out.txt

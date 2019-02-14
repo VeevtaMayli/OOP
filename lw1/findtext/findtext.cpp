@@ -53,6 +53,12 @@ int main(int argc, char* argv[])
 
 	string searchedStr = argv[2];
 
+	if (searchedStr == "")
+	{
+		cout << "Text not found" << endl;
+		return 1;
+	}
+
 	vector<int> findedStringNumbers = FindStringInStream(input, searchedStr);
 
 	if (!findedStringNumbers.empty())
