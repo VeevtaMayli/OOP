@@ -55,7 +55,9 @@ int main(int argc, char* argv[])
 
 	vector<int> foundStringNumbers = FindStringInFile(argv[1], searchedStr, err);
 	if (err)
+	{
 		return 1;
+	}
 
 	if (searchedStr == "")
 		foundStringNumbers.clear();
