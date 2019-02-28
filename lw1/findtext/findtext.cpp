@@ -1,5 +1,4 @@
 ﻿#include "pch.h"
-#include <algorithm>
 #include <fstream>
 #include <iostream>
 #include <iterator>
@@ -8,25 +7,27 @@
 
 using namespace std;
 
-vector<int> FindStringInStream(istream& in, const string str)
+vector<int> FindStringInStream(istream& in, const string& str)
 {
-	string tempStr;
-	vector<int> stringNumbers;
+	string currLine;
+	vector<int> lineNumbers;
 
-	int stringNumber = 0;
-	while (getline(in, tempStr))
+	int lineNumber = 0;
+	while (getline(in, currLine))
 	{
-		stringNumber++;
-		if (tempStr.find(str) != string::npos)
+		lineNumber++;
+		if (currLine.find(str) != string::npos)
 		{
-			stringNumbers.push_back(stringNumber);
+			lineNumbers.push_back(lineNumber);
 		}
 	}
-	return stringNumbers;
+	return lineNumbers;
 }
 
-vector<int> FindStringInFile(const string filePath, const string str, bool& err)
+vector<int> FindStringInFile(const string& filePath, const string str, bool& err)
 {
+	err = false;
+	
 	ifstream input(filePath);
 
 	if (!input.is_open())
