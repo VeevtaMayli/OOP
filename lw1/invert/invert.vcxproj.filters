@@ -48,5 +48,29 @@
     <Text Include="empty-out.txt">
       <Filter>tests</Filter>
     </Text>
+    <Text Include="invalid-matrix.txt">
+      <Filter>tests</Filter>
+    </Text>
+    <Text Include="invalid-matrix-out.txt">
+      <Filter>tests</Filter>
+    </Text>
+    <Text Include="positive-matrix.txt">
+      <Filter>tests</Filter>
+    </Text>
+    <Text Include="positive-matrix-out.txt">
+      <Filter>tests</Filter>
+    </Text>
+    <Text Include="real-matrix.txt">
+      <Filter>tests</Filter>
+    </Text>
+    <Text Include="real-matrix-out.txt">
+      <Filter>tests</Filter>
+    </Text>
+    <Text Include="zero-det.txt">
+      <Filter>tests</Filter>
+    </Text>
+    <Text Include="zero-det-out.txt">
+      <Filter>tests</Filter>
+    </Text>
   </ItemGroup>
 </Project>

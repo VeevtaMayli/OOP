@@ -192,8 +192,16 @@
   <ItemGroup>
     <Text Include="empty-out.txt" />
     <Text Include="empty.txt" />
+    <Text Include="real-matrix-out.txt" />
+    <Text Include="real-matrix.txt" />
+    <Text Include="invalid-matrix-out.txt" />
+    <Text Include="invalid-matrix.txt" />
     <Text Include="no-arguments-out.txt" />
     <Text Include="no-input-file-out.txt" />
+    <Text Include="positive-matrix-out.txt" />
+    <Text Include="positive-matrix.txt" />
+    <Text Include="zero-det-out.txt" />
+    <Text Include="zero-det.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
