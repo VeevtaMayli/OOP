@@ -4,8 +4,7 @@
 
 using namespace std;
 
-template <typename T>
-bool InRange(const T item, const T min, const T max)
+bool InRange(unsigned item, unsigned min, unsigned max)
 {
 	return item >= min && item <= max ? true : false;
 }
@@ -21,18 +20,17 @@ void FlipByte(uint8_t& byte)
 	byte = flippedByte;
 }
 
-int main(int argc, char* argv[])
+bool ParseCommandLine(int argc, char* argv[], uint8_t& byte)
 {
 	if (argc != 2)
 	{
 		cout << "Invalid arguments count" << endl
 			 << "Usage: flipbyte.exe <input byte>"
 			 << endl;
-		return 1;
+		return false;
 	}
 
 	unsigned parsedNumber;
-
 	try
 	{
 		parsedNumber = stoul(argv[1]);
@@ -40,17 +38,26 @@ int main(int argc, char* argv[])
 	catch (const exception& e)
 	{
 		cout << e.what() << endl;
-		return 1;
+		return false;
 	}
 
-	uint8_t byte;
-	if (InRange<unsigned>(parsedNumber, 0, 255))
+	if (InRange(parsedNumber, 0, 255))
 	{
 		byte = static_cast<uint8_t>(parsedNumber);
+		return true;
 	}
 	else
 	{
 		cout << "Out of range <0, 255>" << endl;
+		return false;
+	}
+}
+
+int main(int argc, char* argv[])
+{
+	uint8_t byte;
+	if (!ParseCommandLine(argc, argv, byte))
+	{
 		return 1;
 	}
 
