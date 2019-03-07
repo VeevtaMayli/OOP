@@ -35,6 +35,7 @@ fc %OUT% positive-matrix-out.txt || goto err
 ::ћатрица с любыми значени€ми с определителем > 0
 %PROGRAM% real-matrix.txt > %OUT% || err
 fc %OUT% real-matrix-out.txt || goto err
+
 echo All tests passed
 exit /B 0
 
