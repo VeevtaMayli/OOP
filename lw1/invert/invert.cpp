@@ -6,7 +6,7 @@
 #include <string>
 
 const int MATRIX_SIZE = 3;
-const double EPS = 0.0001;
+const double EPS = 10e-4;
 
 using namespace std;
 
