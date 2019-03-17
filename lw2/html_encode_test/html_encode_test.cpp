@@ -1,7 +1,7 @@
 ﻿#include "pch.h"
 #include "lw2/html_encode/html_encode.h"
 
-TEST_CASE("HtmlEncode() return line from argument with encoded html entities")
+TEST_CASE("HtmlEncode() returns line from argument with encoded html entities")
 {
 	// empty input string
 	std::string in;

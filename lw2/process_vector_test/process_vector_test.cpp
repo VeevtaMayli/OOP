@@ -1,7 +1,7 @@
 ﻿#include "pch.h"
 #include "lw2/process_vector/process_vector.h"
 
-TEST_CASE("ProcessVector() return vector from argument multiplied by its minimum element")
+TEST_CASE("ProcessVector() returns vector from argument multiplied by its minimum element")
 {
 	// empty vector
 	std::vector<double> in = {};

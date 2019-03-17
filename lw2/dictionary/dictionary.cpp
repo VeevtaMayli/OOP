@@ -9,7 +9,7 @@ Dictionary::Dictionary(const std::string& fileName)
 {
 }
 
-std::string Dictionary::Translate() const
+std::string Dictionary::Translate(const std::string& word) const
 {
 	return std::string();
 }

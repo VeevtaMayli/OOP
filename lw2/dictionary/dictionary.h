@@ -9,7 +9,7 @@ class Dictionary
 public:
 	Dictionary();
 	Dictionary(const std::string& fileName);
-	std::string Translate() const;
+	std::string Translate(const std::string& word) const;
 	void AddTranslation(const std::string& word, const std::string& translation);
 	bool Save() const;
 	bool Save(const std::string& fileName) const;
@@ -23,5 +23,5 @@ private:
 
 	TranslationStorage m_storage;
 	const std::string m_dictionaryFileName;
-	bool m_wasChanged;
+	bool m_wasChanged = false;
 };
