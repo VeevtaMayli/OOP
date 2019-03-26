@@ -17,9 +17,10 @@ public:
 
 private:
 	void ReadFromFile(std::istream& input);
-	void SaveToFile(std::ostream& output) const;
+	void StoreToFile(std::ostream& output) const;
 	std::string ToLower(const std::string& str) const;
 	void InsertIntoDictionary(const std::string& word, const std::string& translation);
+	bool TranslationExists(const std::string& word, const std::string& translation);
 
 	TranslationStorage m_storage;
 	const std::string m_dictionaryFileName;
