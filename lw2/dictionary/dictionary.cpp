@@ -35,6 +35,7 @@ void Dictionary::AddTranslation(const std::string& word, const std::string& tran
 	std::string lowerTranslation = ToLower(translation);
 	InsertIntoDictionary(word, translation);
 	InsertIntoDictionary(translation, word);
+	m_wasChanged = true;
 }
 
 bool Dictionary::Save() const
@@ -48,7 +49,7 @@ bool Dictionary::Save(const std::string& fileName) const
 	std::ofstream output(outputFileName);
 	if (output.is_open())
 	{
-		StoreToFile(output);
+		StoreToStream(output);
 		return true;
 	}
 	return false;
@@ -68,7 +69,7 @@ void Dictionary::ReadFromFile(std::istream& input)
 	}
 }
 
-void Dictionary::StoreToFile(std::ostream& output) const
+void Dictionary::StoreToStream(std::ostream& output) const
 {
 	for (const auto& it : m_storage)
 	{
@@ -89,14 +90,18 @@ void Dictionary::InsertIntoDictionary(const std::string& word, const std::string
 	if (!TranslationExists(word, translation))
 	{
 		m_storage.emplace(word, translation);
-		m_wasChanged = true;
 	}
 }
 
-bool Dictionary::TranslationExists(const std::string& word, const std::string& translation)
+bool Dictionary::TranslationExists(const std::string& word, const std::string& translation) const
 {
 	auto foundPositions = m_storage.equal_range(word);
 	return std::find_if(foundPositions.first, foundPositions.second, [&translation](auto&& position) {
 		return position.second == translation;
 	}) != foundPositions.second;
+}
+
+bool Dictionary::hasExternalFile() const
+{
+	return !m_dictionaryFileName.empty();
 }
