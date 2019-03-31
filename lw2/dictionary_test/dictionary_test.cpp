@@ -1,5 +1,5 @@
-﻿#include "lw2/dictionary/dictionary.h"
-#include "pch.h"
+﻿#include "pch.h"
+#include "lw2/dictionary/dictionary.h"
 #include <Windows.h>
 #include <iostream>
 #include <locale>

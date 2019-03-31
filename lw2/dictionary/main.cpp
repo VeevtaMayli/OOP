@@ -81,7 +81,7 @@ void saveChanges(const Dictionary& dictionary)
 
 void Dialog(Dictionary& dictionary)
 {
-	cout << "¬ведите слова, перевод которого желаете узнать. ƒл€ выхода из программы введите У...Ф" << endl;
+	cout << "¬ведите слово, перевод которого желаете узнать. ƒл€ выхода из программы введите У...Ф" << endl;
 	translateWithDictonary(dictionary);	
 	if (dictionary.WasChanged())
 	{

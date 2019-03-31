@@ -35,7 +35,6 @@ void Dictionary::AddTranslation(const std::string& word, const std::string& tran
 	std::string lowerTranslation = ToLower(translation);
 	InsertIntoDictionary(word, translation);
 	InsertIntoDictionary(translation, word);
-	m_wasChanged = true;
 }
 
 bool Dictionary::Save() const
@@ -90,6 +89,7 @@ void Dictionary::InsertIntoDictionary(const std::string& word, const std::string
 	if (!TranslationExists(word, translation))
 	{
 		m_storage.emplace(word, translation);
+		m_wasChanged = true;
 	}
 }
 
