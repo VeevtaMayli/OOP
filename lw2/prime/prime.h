@@ -1,5 +1,7 @@
 #pragma once
 
+#include <set>
+
 using PrimeSet = std::set<int>;
 
-PrimeSet GeneratePrimeNumbersSet(int upperBound);
+PrimeSet GeneratePrimeNumbersSet(const uint32_t upperBound);

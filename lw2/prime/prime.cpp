@@ -1,7 +1,7 @@
 ﻿#include "pch.h"
 #include "prime.h"
 
-PrimeSet GeneratePrimeNumbersSet(int upperBound)
+PrimeSet GeneratePrimeNumbersSet(const uint32_t upperBound)
 {
 	PrimeSet primes;
 	std::vector<bool> primeVector(upperBound + 1);
@@ -23,5 +23,5 @@ PrimeSet GeneratePrimeNumbersSet(int upperBound)
 			}
 		}
 	}
-	return 
+	return primes;
 }
