@@ -19,5 +19,8 @@ TEST_CASE("Test prime numbers set generation")
 	CHECK(GeneratePrimeNumbersSet(12) == test);
 
 	CHECK(GeneratePrimeNumbersSet(1000).size() == 168);
+
+#ifndef _DEBUG
 	CHECK(GeneratePrimeNumbersSet(100000000).size() == 5761455);
+#endif // !_DEBUG
 }
