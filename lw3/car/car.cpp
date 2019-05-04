@@ -19,7 +19,7 @@ bool CCar::TurnOnEngine()
 
 bool CCar::TurnOffEngine()
 {
-	if (m_engineState == EngineState::ON && m_gear == 0 && m_speed == 0)
+	if (m_gear == 0 && m_speed == 0)
 	{
 		m_engineState = EngineState::OFF;
 		return true;

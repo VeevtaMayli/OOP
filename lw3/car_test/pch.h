@@ -2,5 +2,7 @@
 #define PCH_H
 
 #include "catch2/catch.hpp"
+#include <functional>
+#include <map>
 
 #endif //PCH_H
