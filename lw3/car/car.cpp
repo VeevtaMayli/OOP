@@ -82,7 +82,7 @@ void CCar::ChangeDirection()
 	}
 	if (m_speed > 0 && m_gear < 0)
 	{
-		m_direction = Direction::FORWARD;
+		m_direction = Direction::BACK;
 	}
 }
 
