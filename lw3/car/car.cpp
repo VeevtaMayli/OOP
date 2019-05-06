@@ -14,7 +14,7 @@ map<int, TransmitionSpeedRange> CCar::m_transmition = { { -1, { 0, 20 } },
 bool CCar::TurnOnEngine()
 {
 	m_engineState = EngineState::ON;
-	return true;
+	return MakeError(Error::NO_ERROR);
 }
 
 bool CCar::TurnOffEngine()
@@ -22,52 +22,51 @@ bool CCar::TurnOffEngine()
 	if (m_gear == 0 && m_speed == 0)
 	{
 		m_engineState = EngineState::OFF;
-		return true;
+		return MakeError(Error::NO_ERROR);
 	}
-	return false;
+	return MakeError(Error::CAR_IS_MOVING);
 }
 
-bool CCar::CanShiftGear(const int gear) const
+Error CCar::CanShiftGear(const int gear) const
 {
 	if (m_engineState == EngineState::OFF)
 	{
-		return false;
+		return Error::ENGINE_IS_OFF;
 	}
 	if (gear > 0 && m_direction == Direction::BACK || gear < 0 && m_direction != Direction::NONE)
 	{
-		return false;
+		return Error::CAR_IS_MOVING;
 	}
 	try
 	{
 		TransmitionSpeedRange range = m_transmition.at(gear);
 		if (range.min > m_speed || range.max < m_speed)
 		{
-			return false;
+			return Error::SPEED_IS_NOT_ALLOWED;
 		}
 	}
-	catch (std::out_of_range const& e)
+	catch (std::out_of_range)
 	{
-		e.what();
-		return false;
+		return Error::GEAR_NOT_EXISTS;
 	}
-	return true;
+	return Error::NO_ERROR;
 }
 
-bool CCar::CanSetSpeed(const unsigned int speed) const
+Error CCar::CanSetSpeed(const unsigned int speed) const
 {
 	if (m_engineState == EngineState::OFF)
 	{
-		return false;
+		return Error::ENGINE_IS_OFF;
 	}
 	if (m_gear == 0 && speed > m_speed)
 	{
-		return false;
+		return Error::SPEED_CAN_DECREASE_ONLY;
 	}
 	if (m_transmition[m_gear].min > speed || m_transmition[m_gear].max < speed)
 	{
-		return false;
+		return Error::SPEED_IS_NOT_ALLOWED;
 	}
-	return true;
+	return Error::NO_ERROR;
 }
 
 void CCar::ChangeDirection()
@@ -86,25 +85,32 @@ void CCar::ChangeDirection()
 	}
 }
 
+bool CCar::MakeError(const Error err)
+{
+	m_error = err;
+	return m_error == Error::NO_ERROR;
+}
+
 bool CCar::SetGear(const int gear)
 {
-	if (!CanShiftGear(gear))
+	Error err = CanShiftGear(gear);
+	if (err == Error::NO_ERROR)
 	{
-		return false;
+		m_gear = gear;
+		return true;
 	}
-	m_gear = gear;
-	return true;
+	return false;
 }
 
 bool CCar::SetSpeed(const int speed)
 {
-	if (!CanSetSpeed(speed))
+	Error err = CanSetSpeed(speed);
+	if (err == Error::NO_ERROR)
 	{
-		return false;
+		m_speed = speed;
+		ChangeDirection();
 	}
-	m_speed = speed;
-	ChangeDirection();
-	return true;
+	return MakeError(err);
 }
 
 int CCar::GetGear() const
