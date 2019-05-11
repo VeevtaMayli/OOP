@@ -4,5 +4,6 @@
 #include "catch2/catch.hpp"
 #include <functional>
 #include <map>
+#include <sstream>
 
 #endif //PCH_H

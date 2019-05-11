@@ -168,10 +168,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\car\car.h" />
+    <ClInclude Include="..\car\car_controller.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\car\car.cpp" />
+    <ClCompile Include="..\car\car_controller.cpp" />
+    <ClCompile Include="car_controller_test.cpp" />
     <ClCompile Include="car_test.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pch.cpp">
