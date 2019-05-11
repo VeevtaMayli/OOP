@@ -20,8 +20,9 @@ private:
 	bool SetGear(std::istream& args);
 	bool SetSpeed(std::istream& args);
 
-	static std::string ToString(EngineState state);
-	static std::string ToString(Direction direction);
+	static std::string ToString(const EngineState state);
+	static std::string ToString(const Direction direction);
+	static std::string ErrorHandler(const Error err);
 
 	CCar& m_car;
 	std::istream& m_input;

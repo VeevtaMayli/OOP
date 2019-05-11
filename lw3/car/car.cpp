@@ -97,9 +97,8 @@ bool CCar::SetGear(const int gear)
 	if (err == Error::NO_ERROR)
 	{
 		m_gear = gear;
-		return true;
 	}
-	return false;
+	return MakeError(err);
 }
 
 bool CCar::SetSpeed(const int speed)
@@ -131,4 +130,9 @@ Direction CCar::GetDirection() const
 EngineState CCar::GetEngineState() const
 {
 	return m_engineState;
+}
+
+Error CCar::GetError() const
+{
+	return m_error;
 }

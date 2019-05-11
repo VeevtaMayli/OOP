@@ -40,6 +40,7 @@ public:
 	unsigned int GetSpeed() const;
 	Direction GetDirection() const;
 	EngineState GetEngineState() const;
+	Error GetError() const;
 
 private:
 	Error CanShiftGear(const int gear) const;
