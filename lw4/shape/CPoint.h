@@ -2,7 +2,6 @@
 class CPoint
 {
 public:
-	CPoint();
-	~CPoint();
+	double x;
+	double y;
 };
-
