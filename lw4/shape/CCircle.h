@@ -1,10 +1,18 @@
 #pragma once
-#include "ISolidShape.h"
-class CCircle :
-	public ISolidShape
+#include "CPoint.h"
+#include "CSolidShape.h"
+
+class CCircle final : public CSolidShape
 {
 public:
 	CCircle();
-	~CCircle();
-};
+	double GetArea() const override;
+	double GetPerimeter() const override;
 
+	double GetRadius() const;
+	CPoint GetCenter() const;
+
+private:
+	CPoint m_center;
+	double m_radius;
+};
