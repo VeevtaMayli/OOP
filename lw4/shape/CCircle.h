@@ -13,6 +13,8 @@ public:
 	CPoint GetCenter() const;
 
 private:
+	void AppendSolidShapeChildProperties(std::ostream& strm) const;
+
 	CPoint m_center;
 	double m_radius;
 };

@@ -9,6 +9,8 @@ public:
 	std::string ToString() const override;
 
 private:
+	virtual void AppendProperties(std::ostream& strm) const = 0;
+
 	std::string m_type;
 	uint32_t m_outlineColor;
 };

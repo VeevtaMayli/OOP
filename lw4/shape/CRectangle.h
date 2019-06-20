@@ -16,6 +16,8 @@ public:
 	double GetHeight() const;
 
 private:
+	void AppendSolidShapeChildProperties(std::ostream& strm) const;
+
 	CPoint m_leftTop;
 	CPoint m_rightBottom;
 };

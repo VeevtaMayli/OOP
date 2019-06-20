@@ -13,7 +13,8 @@ public:
 	std::string ToString() const final;
 
 private:
-	std::string m_type;
-	uint32_t m_outlineColor;
+	void AppendProperties(std::ostream& strm) const final;
+	virtual void AppendSolidShapeChildProperties(std::ostream& strm) const = 0;
+	
 	uint32_t m_fillColor;
 };

@@ -21,5 +21,6 @@ std::string CShape::ToString() const
 		 << fixed << setprecision(2) << "\tarea = " << GetArea() << endl
 		 << "\tperimeter = " << GetPerimeter() << endl
 		 << "\toutline color = " << setfill('0') << setw(6) << hex << GetOutlineColor() << endl;
+	AppendProperties(strm);
 	return strm.str();
 }

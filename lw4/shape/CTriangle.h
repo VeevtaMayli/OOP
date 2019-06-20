@@ -14,6 +14,8 @@ public:
 	CPoint GetVertex3() const;
 
 private:
+	void AppendSolidShapeChildProperties(std::ostream& strm) const;
+
 	CPoint m_vertex1;
 	CPoint m_vertex2;
 	CPoint m_vertex3;

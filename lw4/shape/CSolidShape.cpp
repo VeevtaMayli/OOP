@@ -23,3 +23,9 @@ string CSolidShape::ToString() const
 {
 	return CShape::ToString();
 }
+
+void CSolidShape::AppendProperties(std::ostream& strm) const
+{
+	strm << "\tfill color = " << setfill('0') << setw(6) << hex << GetFillColor() << endl;
+	AppendSolidShapeChildProperties(strm);
+}

@@ -39,3 +39,12 @@ double CRectangle::GetHeight() const
 {
 	return abs(GetLeftTop().y - GetRightBottom().y);
 }
+
+void CRectangle::AppendSolidShapeChildProperties(std::ostream& strm) const
+{
+	strm << fixed << setprecision(2)
+		 << "\tleft top(" << m_leftTop.x << ", " << m_leftTop.y << ")" << endl
+		 << "\tright bottom(" << m_rightBottom.x << ", " << m_rightBottom.y << ")" << endl
+		 << "\twidth = " << GetWidth() << endl
+		 << "\theight = " << GetHeight() << endl;
+}
