@@ -6,7 +6,7 @@ using namespace std;
 CRectangle::CRectangle(CPoint const& leftTop, CPoint const& rightBottom, uint32_t outlineColor, uint32_t fillColor)
 	: CSolidShape("Rectangle", outlineColor, fillColor)
 	, m_leftTop(leftTop)
-	, m_rightBottom(m_rightBottom)
+	, m_rightBottom(rightBottom)
 {
 }
 
