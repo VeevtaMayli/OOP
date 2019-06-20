@@ -1,7 +1,5 @@
 #include "pch.h"
 #include "CSolidShape.h"
-#include "CShape.h"
-#include "IShape.h"
 
 using namespace std;
 

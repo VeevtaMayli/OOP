@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "CLineSegment.h"
-#include "CPoint.h"
 
 CLineSegment::CLineSegment(const CPoint& startPoint, const CPoint& endPoint, uint32_t outlineColor)
 	: CShape("LineSegment", outlineColor)
@@ -18,8 +17,7 @@ double CLineSegment::GetPerimeter() const
 {
 	CPoint startPoint = GetStartPoint();
 	CPoint endPoint = GetEndPoint();
-	// TODO: distance between p1 and p2
-	return 0.0;
+	return GetDistance(startPoint, endPoint);
 }
 
 CPoint CLineSegment::GetStartPoint() const

@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "CShape.h"
-#include "IShape.h"
 
 using namespace std;
 
