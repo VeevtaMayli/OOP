@@ -32,7 +32,7 @@ CPoint CLineSegment::GetEndPoint() const
 	return m_endPoint;
 }
 
-void CLineSegment::AppendProperties(std::ostream& strm)
+void CLineSegment::AppendProperties(std::ostream& strm) const
 {
 	strm << fixed << setprecision(2)
 		 << "\tstart point(" << m_startPoint.x << ", " << m_startPoint.y << ")" << endl

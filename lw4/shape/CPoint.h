@@ -3,6 +3,8 @@
 class CPoint
 {
 public:
+	bool operator==(CPoint const& other) const;
+
 	double x;
 	double y;
 };

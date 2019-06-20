@@ -13,7 +13,7 @@ public:
 	CPoint GetEndPoint() const;
 
 private:
-	void AppendProperties(std::ostream& strm);
+	void AppendProperties(std::ostream& strm) const;
 
 	CPoint m_startPoint;
 	CPoint m_endPoint;

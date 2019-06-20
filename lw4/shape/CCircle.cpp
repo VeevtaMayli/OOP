@@ -35,3 +35,4 @@ void CCircle::AppendSolidShapeChildProperties(std::ostream& strm) const
 	strm << fixed << setprecision(2)
 		 << "\tcenter(" << m_center.x << ", " << m_center.y << ")" << endl
 		 << "\tradius =" << GetRadius() << endl;
+}
