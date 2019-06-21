@@ -172,6 +172,7 @@
     <ClInclude Include="..\shape\CPoint.h" />
     <ClInclude Include="..\shape\CRectangle.h" />
     <ClInclude Include="..\shape\CShape.h" />
+    <ClInclude Include="..\shape\CShapeProcessor.h" />
     <ClInclude Include="..\shape\CSolidShape.h" />
     <ClInclude Include="..\shape\CTriangle.h" />
     <ClInclude Include="..\shape\IShape.h" />
@@ -184,6 +185,7 @@
     <ClCompile Include="..\shape\CPoint.cpp" />
     <ClCompile Include="..\shape\CRectangle.cpp" />
     <ClCompile Include="..\shape\CShape.cpp" />
+    <ClCompile Include="..\shape\CShapeProcessor.cpp" />
     <ClCompile Include="..\shape\CSolidShape.cpp" />
     <ClCompile Include="..\shape\CTriangle.cpp" />
     <ClCompile Include="circle_test.cpp" />
@@ -196,6 +198,7 @@
     </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="rectangle_test.cpp" />
+    <ClCompile Include="shape_processor_test.cpp" />
     <ClCompile Include="triangle_test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
