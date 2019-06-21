@@ -40,10 +40,30 @@ void CShapeProcessor::Info() const
 
 void CShapeProcessor::PrintShapeWithMinPerimeter() const
 {
+	if (m_shapeList.empty())
+	{
+		return;
+	}
+	auto shapeWithMinPerimeter = min_element(m_shapeList.cbegin(), m_shapeList.cend(), [](const auto& arg1, const auto& arg2) {
+		return arg1->GetPerimeter() < arg2->GetPerimeter();
+	});
+
+	m_output << "Shape with min perimeter is "
+			 << (*shapeWithMinPerimeter)->ToString() << endl;
 }
 
 void CShapeProcessor::PrintShapeWithMaxArea() const
 {
+	if (m_shapeList.empty())
+	{
+		return;
+	}
+	auto shapeWithMaxArea = max_element(m_shapeList.begin(), m_shapeList.end(), [](const auto& arg1, const auto& arg2) {
+		return arg1->GetArea() < arg2->GetArea();
+	});
+
+	m_output << "Shape with max area is "
+			 << (*shapeWithMaxArea)->ToString() << endl;
 }
 
 bool CShapeProcessor::AddCircle(std::istream& args)
@@ -139,8 +159,8 @@ bool CShapeProcessor::AddTriangle(std::istream& args)
 
 	if (params.size() == 9)
 	{
-		outlineColor = stoul(params[8], nullptr, 16);
-		fillColor = stoul(params[9], nullptr, 16);
+		outlineColor = stoul(params[7], nullptr, 16);
+		fillColor = stoul(params[8], nullptr, 16);
 	}
 
 	auto triangle = make_shared<CTriangle>(vertex1, vertex2, vertex3, outlineColor, fillColor);

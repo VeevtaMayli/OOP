@@ -3,17 +3,18 @@
 
 using namespace std;
 
-SCENARIO("check the count of circle arguments")
+SCENARIO("Check the count of circle arguments")
 {
 	stringstream input;
 	ostringstream output;
 
-	GIVEN("not all arguments")
+	GIVEN("shape processor")
 	{
+		CShapeProcessor sp(input, output);
+
 		WHEN("user enter circle with not all arguments")
 		{
 			input << "Circle 0.00 3.00";
-			CShapeProcessor sp(input, output);
 
 			THEN("it is notified that not all arguments")
 			{
@@ -23,17 +24,18 @@ SCENARIO("check the count of circle arguments")
 	}
 }
 
-SCENARIO("check the count of triangle arguments")
+SCENARIO("Check the count of triangle arguments")
 {
 	stringstream input;
 	ostringstream output;
 
-	GIVEN("not all arguments")
+	GIVEN("shape processor")
 	{
+		CShapeProcessor sp(input, output);
+
 		WHEN("user enter triangle with not all arguments")
 		{
 			input << "Triangle 1.00 2.00 1 3";
-			CShapeProcessor sp(input, output);
 
 			THEN("it is notified that not all arguments")
 			{
@@ -43,17 +45,18 @@ SCENARIO("check the count of triangle arguments")
 	}
 }
 
-SCENARIO("check the nucountmber of rectangle arguments")
+SCENARIO("Check the count of rectangle arguments")
 {
 	stringstream input;
 	ostringstream output;
 
-	GIVEN("not all arguments")
+	GIVEN("shape processor")
 	{
+		CShapeProcessor sp(input, output);
+
 		WHEN("user enter rectangle with not all arguments")
 		{
 			input << "Rectangle 0.00 1.00 5.00";
-			CShapeProcessor sp(input, output);
 
 			THEN("it is notified that not all arguments")
 			{
@@ -63,21 +66,66 @@ SCENARIO("check the nucountmber of rectangle arguments")
 	}
 }
 
-SCENARIO("check the count of line segment arguments")
+SCENARIO("Check the count of line segment arguments")
 {
 	stringstream input;
 	ostringstream output;
 
-	GIVEN("not all arguments")
+	GIVEN("shape processor")
 	{
+		CShapeProcessor sp(input, output);
+
 		WHEN("user enter lineSegment with not all arguments")
 		{
 			input << "LineSegment 0.00 0.00 1.00";
-			CShapeProcessor sp(input, output);
 
 			THEN("it is notified that not all arguments")
 			{
 				CHECK_THROWS_WITH(sp.HandleCommand(), "Incorrect count of arguments!\nUsage: LineSegment start.x start.y end.x end.y [outline]\n");
+			}
+		}
+	}
+}
+
+SCENARIO("Search max area and min perimeter")
+{
+	stringstream input;
+	ostringstream output;
+
+	GIVEN("shape processor")
+	{
+		CShapeProcessor sp(input, output);
+
+		WHEN("user enter circle, rectangle, triangle and line segment")
+		{
+			input << "Rectangle 2.0 0 0 4.0\n";
+			sp.HandleCommand();
+			input << "Circle 0 0 5.0\n";
+			sp.HandleCommand();
+			input << "Triangle 0 1.0 2.0 3.0 0 3.0 ff0000 00ff99\n";
+			sp.HandleCommand();
+			input << "LineSegment 0 1.0 2.0 3.0 ff2200\n";
+			sp.HandleCommand();
+
+			THEN("print shape with max area and min perimeter")
+			{
+				string result = "Shape with max area is Circle:\n"
+								"\tarea = 78.54\n"
+								"\tperimeter = 31.42\n"
+								"\toutline color = 000000\n"
+								"\tfill color = ffffff\n"
+								"\tcenter(0.00, 0.00)\n"
+								"\tradius = 5.00\n\n"
+								"Shape with min perimeter is LineSegment:\n"
+								"\tarea = 0.00\n"
+								"\tperimeter = 2.83\n"
+								"\toutline color = ff2200\n"
+								"\tstart point(0.00, 1.00)\n"
+								"\tend point(2.00, 3.00)\n\n";
+
+				sp.PrintShapeWithMaxArea();
+				sp.PrintShapeWithMinPerimeter();
+				CHECK(output.str() == result);
 			}
 		}
 	}
