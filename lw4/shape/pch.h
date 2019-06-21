@@ -5,6 +5,7 @@
 #include <functional>
 #include <iomanip>
 #include <iostream>
+#include <map>
 #define _USE_MATH_DEFINES
 #include <math.h>
 #include <sstream>
