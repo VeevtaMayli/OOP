@@ -45,6 +45,16 @@ TEST_CASE("can convert fraction to double")
 	CHECK(CRational(0, 40).ToDouble() == 0.0);
 }
 
+TEST_CASE("can convert fraction to compound")
+{
+	CHECK(CRational(3, 2).ToCompoundFraction() == std::pair<int, CRational>(1, CRational(1, 2)));
+	CHECK(CRational(-3, 2).ToCompoundFraction() == std::pair<int, CRational>(-1, CRational(-1, 2)));
+	CHECK(CRational(1, 2).ToCompoundFraction() == std::pair<int, CRational>(0, CRational(1, 2)));
+	CHECK(CRational(3, 3).ToCompoundFraction() == std::pair<int, CRational>(1, CRational(0, 1)));
+	CHECK(CRational(0, 2).ToCompoundFraction() == std::pair<int, CRational>(0, CRational(0, 1)));
+}
+
+
 TEST_CASE("can use unary + operation")
 {
 	ExpectOperationSuccess(+CRational(5, 3), 5, 3);
