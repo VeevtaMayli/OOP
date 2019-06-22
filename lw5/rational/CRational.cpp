@@ -36,6 +36,11 @@ double CRational::ToDouble() const
 	return static_cast<double>(m_numerator) / m_denominator;
 }
 
+std::pair<int, CRational> CRational::ToCompoundFraction() const
+{
+	return std::pair<int, CRational>(m_numerator / m_denominator, CRational(m_numerator % m_denominator, m_denominator));
+}
+
 CRational const CRational::operator-() const
 {
 	return CRational(-m_numerator, m_denominator);
