@@ -32,4 +32,4 @@ bool const operator<=(const CRational& fraction1, const CRational& fraction2);
 bool const operator>=(const CRational& fraction1, const CRational& fraction2);
 
 std::ostream& operator<<(std::ostream& strm, const CRational& fraction);
-std::istream& operator>>(std::istream& strm, const CRational& fraction);
+std::istream& operator>>(std::istream& strm, CRational& fraction);

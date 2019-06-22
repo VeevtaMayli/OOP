@@ -149,8 +149,8 @@ TEST_CASE("can check < > <= >= ")
 	CHECK(CRational(5, 3) > CRational(-4, 3));
 	CHECK((CRational(5, 3) < CRational(-4, 3)) == false);
 
-	CHECK(CRational(4, 3) < CRational(5, 6));
-	CHECK((CRational(4, 3) > CRational(5, 6)) == false);
+	CHECK(CRational(4, 3) > CRational(5, 6));
+	CHECK((CRational(4, 3) < CRational(5, 6)) == false);
 
 	CHECK((CRational(5, 5) > CRational(5, 5)) == false);
 	CHECK((CRational(5, 5) < CRational(5, 5)) == false);
