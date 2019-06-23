@@ -5,7 +5,7 @@
 
 using namespace std;
 
-const double EPS = 10E-7;
+const double EPS = 1.0E-7;
 
 bool IsEqual(const double a, const double b)
 {
