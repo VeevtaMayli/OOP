@@ -171,7 +171,6 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\my_stack\CMyStack.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="my_stack_test.cpp" />
     <ClCompile Include="pch.cpp">
