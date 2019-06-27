@@ -99,12 +99,23 @@ public:
 
 	CMyStack& operator=(const CMyStack& other)
 	{
-
+		if (this != &other)
+		{
+			CMyStack tempStack(other);
+			std::swap(m_top, tempStack.m_top);
+		}
+		return *this;
 	}
 
-	CMyStack& operator=(CMyStack&& other)
+	CMyStack& operator=(CMyStack&& other) noexcept
 	{
-
+		if (this != &other)
+		{
+			Clear();
+			m_top = other.m_top;
+			other.m_top = nullptr;
+		}
+		return *this;
 	}
 
 private:
