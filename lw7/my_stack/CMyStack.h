@@ -18,15 +18,35 @@ public:
 	CMyStack() = default;
 
 	CMyStack(const CMyStack& other)
+		: CMyStack()
 	{
+		try
+		{
+			Element* src = other.m_top;
+			Element** dst = &m_top;
+			while (src)
+			{
+				*dst = new Element(src->data, nullptr);
+				dst = &(*dst)->next;
+				src = src->next;
+			}
+		}
+		catch (...)
+		{
+			Clear();
+			throw;
+		}
 	}
 
-	CMyStack(CMyStack&& stack)
+	CMyStack(CMyStack&& other) noexcept
+		: m_top(other.m_top)
 	{
+		other.m_top = nullptr;
 	}
 
 	~CMyStack()
 	{
+		Clear();
 	}
 
 	bool IsEmpty() const noexcept
@@ -66,8 +86,14 @@ public:
 		}
 	}
 
-	void Clear()
+	void Clear() noexcept
 	{
+		while (!IsEmpty())
+		{
+			Element* ptr = m_top;
+			m_top = m_top->next;
+			delete ptr;
+		}
 
 	}
 
