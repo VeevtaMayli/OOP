@@ -4,14 +4,16 @@
 using namespace std;
 
 template <typename T>
-void IsEqual(CMyStack<T>& stack, CMyStack<T>& copy)
+void IsEqual(CMyStack<T>& stack1, CMyStack<T>& stack2)
 {
-	while (!stack.IsEmpty())
+	while (!stack1.IsEmpty() && !stack2.IsEmpty())
 	{
-		CHECK(stack.GetTop() == copy.GetTop());
-		stack.Pop();
-		copy.Pop();
+		CHECK(stack1.GetTop() == stack2.GetTop());
+		stack1.Pop();
+		stack2.Pop();
 	}
+	CHECK(stack1.IsEmpty());
+	CHECK(stack2.IsEmpty());
 }
 
 TEST_CASE("stack of int")
@@ -135,7 +137,8 @@ TEST_CASE("stack of string")
 
 		SECTION("using move assignment operator")
 		{
-			CMyStack<string> copy = stack;
+			CMyStack<string> copy;
+			copy = stack;
 			CMyStack<string> other = move(stack);
 
 			CHECK(stack.IsEmpty());
