@@ -25,17 +25,29 @@ CStringStack::~CStringStack()
 
 CStringStack& CStringStack::operator=(const CStringStack& other)
 {
-
+	if (this != &other)
+	{
+		CStringStack tempStack(other);
+		m_top.swap(tempStack.m_top);
+	}
+	return *this;
 }
 
 CStringStack& CStringStack::operator=(CStringStack&& other)
 {
-
+	if (this != &other)
+	{
+		Clear();
+		m_top = std::move(other.m_top);
+		other.m_top = nullptr;
+	}
+	return *this;
 }
 
 void CStringStack::Push(const std::string& data)
 {
-
+	auto newElement= std::make_unique<Element>(data, std::move(m_top));
+	m_top = std::move(newElement);
 }
 
 bool CStringStack::IsEmpty() const

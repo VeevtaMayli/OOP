@@ -23,5 +23,5 @@ public:
 	CStringStack& operator=(CStringStack&& other);
 
 private:
-	std::unique_ptr<Element> m_top;
+	std::unique_ptr<Element> m_top = nullptr;
 };
