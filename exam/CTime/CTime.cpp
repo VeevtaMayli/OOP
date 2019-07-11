@@ -54,7 +54,7 @@ CTime& CTime::operator-=(const CTime& time)
 	return *this = *this - time;
 }
 
-const CTime& CTime::operator+(const CTime& time) const
+const CTime CTime::operator+(const CTime& time) const
 {
 	int totalSeconds = GetSeconds() + time.GetSeconds();
 	int seconds = totalSeconds % (SECONDS_BOUND);
@@ -66,7 +66,7 @@ const CTime& CTime::operator+(const CTime& time) const
 	return CTime(hours, minutes, seconds);
 }
 
-const CTime& CTime::operator-(const CTime& time) const
+const CTime CTime::operator-(const CTime& time) const
 {
 	int argTimeInSeconds = time.GetSeconds() + (time.GetMinutes() + time.GetHours() * MINUTES_BOUND) * SECONDS_BOUND;
 	int timeInSeconds = GetSeconds() + (GetMinutes() + GetHours() * MINUTES_BOUND) * SECONDS_BOUND;

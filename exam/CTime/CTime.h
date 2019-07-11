@@ -25,8 +25,8 @@ public:
 
 	CTime& operator+=(const CTime& time);
 	CTime& operator-=(const CTime& time);
-	const CTime& operator+(const CTime& time) const;
-	const CTime& operator-(const CTime& time) const;
+	const CTime operator+(const CTime& time) const;
+	const CTime operator-(const CTime& time) const;
 
 private:
 	int m_hours;
