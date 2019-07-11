@@ -27,8 +27,17 @@ CStringStack& CStringStack::operator=(const CStringStack& other)
 {
 	if (this != &other)
 	{
-		CStringStack tempStack(other);
-		m_top.swap(tempStack.m_top);
+		Element* node = other.m_top.get();
+		std::unique_ptr<Element> element = std::make_unique<Element>(node->data, nullptr);
+		std::unique_ptr<Element> top = std::make_unique<Element>(element->data, nullptr);
+
+		node = node->next.get();
+		while (node)
+		{
+			element->next = std::make_unique<Element>(node->data, nullptr);
+			element = std::move(element->next);
+			node = node->next.get();
+		}
 	}
 	return *this;
 }

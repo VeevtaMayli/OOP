@@ -11,8 +11,6 @@ void IsEqual(CStringStack& stack1, CStringStack& stack2)
 		stack1.Pop();
 		stack2.Pop();
 	}
-	CHECK(stack1.IsEmpty());
-	CHECK(stack2.IsEmpty());
 }
 
 TEST_CASE("stack of string")
@@ -45,12 +43,12 @@ TEST_CASE("stack of string")
 
 		SECTION("using copy constructor")
 		{
-			//CStringStack copy(stack);
-			//CHECK_FALSE(stack.IsEmpty());
-			//IsEqual(stack, copy);
+			CStringStack copy(stack);
+			CHECK_FALSE(stack.IsEmpty());
+			IsEqual(stack, copy);
 		}
 
-		/*SECTION("using copy assignment operator")
+		SECTION("using copy assignment operator")
 		{
 			CStringStack copy = stack;
 			CHECK_FALSE(stack.IsEmpty());
@@ -74,7 +72,7 @@ TEST_CASE("stack of string")
 
 			CHECK(stack.IsEmpty());
 			IsEqual(copy, other);
-		}*/
+		}
 
 		SECTION("clear stack")
 		{
